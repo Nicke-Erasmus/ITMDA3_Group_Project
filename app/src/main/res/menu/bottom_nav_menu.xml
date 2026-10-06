@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+    android:id="@+id/ai_helper"
+    android:title="AI Helper"
+    android:icon="@drawable/ai_helper_icon" />
+
+    <item
+        android:id="@+id/study_rooms"
+        android:title="Study Rooms"
+        android:icon="@drawable/study_groups_icon" />
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/home_icon" />
+
+    <item
+        android:id="@+id/habit_tracker"
+        android:title="Habit Tracker"
+        android:icon="@drawable/habit_tracker_icon" />
+
+    <item
+        android:id="@+id/notes"
+        android:title="Note Taker"
+        android:icon="@drawable/notes_icon" />
+</menu>

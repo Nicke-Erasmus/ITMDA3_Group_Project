@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--First page that the user sees when opening the application -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10sp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/study_rooms_items"
+        android:paddingHorizontal="10dp"/>
+
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"
+        android:focusable="true"
+        android:queryHint="Search..."
+        android:elevation="5dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/study_room_borders"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAdd"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="25dp"
+        android:src = "@drawable/add"
+        android:backgroundTint="@color/light_blue"
+        app:tint="@null"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

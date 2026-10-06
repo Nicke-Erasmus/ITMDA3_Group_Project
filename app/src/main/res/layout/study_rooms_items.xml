@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/roomCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="6dp"
+    android:layout_margin="10dp"
+    android:layout_marginBottom="100dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="12dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+
+    <TextView
+        android:id="@+id/room_title"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="20dp"
+        android:text="Room Name"
+        style="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="7dp"
+        android:layout_marginBottom="15dp"
+        />
+
+    <TextView
+        android:id="@+id/room_date"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="20dp"
+        android:text="Date"
+        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/room_title"
+        android:layout_marginEnd="7dp"
+        />
+
+    <TextView
+        android:id="@+id/room_description"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textSize="15dp"
+        android:text="Description including info regarding the study session or the tutoring session"
+        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/room_title"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="7dp"
+        />
+
+    <TextView
+        android:id="@+id/room_location"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="15dp"
+        android:drawableStart="@drawable/location"
+        android:drawableTint="@color/background_grey"
+        android:drawablePadding="5dp"
+        android:text="Location"
+        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/room_description"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="7dp"
+        android:textColor="@color/background_grey"
+        />
+
+    <TextView
+        android:id="@+id/room_time"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="15dp"
+        android:drawableStart="@drawable/clock"
+        android:drawableTint="@color/background_grey"
+        android:drawablePadding="5dp"
+        android:text="Time"
+        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/room_description"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="7dp"
+        android:textColor="@color/background_grey"
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

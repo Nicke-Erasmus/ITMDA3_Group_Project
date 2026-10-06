@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ITMDA3_Group_Project" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.ITMDA3_Group_Project" parent="Base.Theme.ITMDA3_Group_Project" />
+
+    <!-- Button refuses to change color due to theme overwriting it.
+         Added the style inside theme to overwrite and change the color of the buttons-->
+    <style name="BlueButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/nav_blue</item>
+        <item name="cornerRadius">0dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="top_bar_text" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">27sp</item>
+    </style>
+
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "459230821266",
+    "project_id": "itmda-group-project",
+    "storage_bucket": "itmda-group-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459230821266:android:55d9efe28248489bcbdf4b",
+        "android_client_info": {
+          "package_name": "com.example.itmda3_group_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWxeJFf68hLa1rg5sgPhKq0Ju8bYLVAVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459230821266:android:5c46a45d854339bbcbdf4b",
+        "android_client_info": {
+          "package_name": "com.example.itmda_group_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWxeJFf68hLa1rg5sgPhKq0Ju8bYLVAVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
