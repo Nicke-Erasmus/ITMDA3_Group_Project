@@ -19,16 +19,16 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         app:cardCornerRadius="30dp"
-        android:elevation="20dp"
-        android:background="@drawable/login_register_edits"
-        android:backgroundTint="#FFFAFA">
+        app:cardElevation="6dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
-            android:padding="25dp">
+            android:padding="25dp"
+            android:background="#DFDFDF">
 
             <TextView
                 android:layout_width="match_parent"
