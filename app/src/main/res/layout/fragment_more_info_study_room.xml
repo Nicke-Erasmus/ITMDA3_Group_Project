@@ -47,6 +47,17 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="20dp"/>
 
+    <TextView
+        android:id="@+id/room_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="11/05/27"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/dialog_room_title"
+        app:layout_constraintStart_toEndOf="@id/dialog_room_date"
+        android:layout_marginTop="20dp"/>
+
     <!-- Time -->
     <TextView
         android:id="@+id/dialog_room_time"
@@ -59,6 +70,16 @@
         app:layout_constraintTop_toBottomOf="@id/dialog_room_date"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="12dp"/>
+
+    <TextView
+        android:id="@+id/room_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="11:00"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@id/dialog_room_time"
+        app:layout_constraintStart_toEndOf="@id/dialog_room_time"/>
 
     <!-- Location -->
     <TextView
@@ -73,6 +94,18 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="12dp"/>
 
+    <TextView
+        android:id="@+id/room_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Eduvos Pretoria Campus Lv 101"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@id/dialog_room_location"
+        app:layout_constraintStart_toEndOf="@id/dialog_room_location"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
     <!-- Availability -->
     <TextView
         android:id="@+id/dialog_room_availability"
@@ -82,9 +115,20 @@
         android:textSize="20sp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/dialog_room_location"
+        app:layout_constraintTop_toBottomOf="@id/room_location"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="12dp"/>
+
+    <TextView
+        android:id="@+id/room_availability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="20"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@id/dialog_room_availability"
+        app:layout_constraintStart_toEndOf="@id/dialog_room_availability"/>
+
 
     <!-- Description -->
     <TextView
@@ -101,6 +145,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"/>
 
+    <TextView
+        android:id="@+id/room_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="A chill session where IT students can study together and learn together."
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/dialog_room_description"/>
+
     <!-- Close Button -->
     <Button
         android:id="@+id/dialog_close_button"
@@ -109,7 +162,7 @@
         android:text="Join session"
         android:textColor="@color/white"
         android:backgroundTint="@color/light_blue"
-        app:layout_constraintTop_toBottomOf="@id/dialog_room_description"
+        app:layout_constraintTop_toBottomOf="@id/room_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"

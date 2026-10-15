@@ -24,11 +24,11 @@ public class More_Info_Study_Rooms extends DialogFragment {
         }
 
         tvTitle = view.findViewById(R.id.dialog_room_title);
-        tvDate = view.findViewById(R.id.dialog_room_date);
-        tvDescription = view.findViewById(R.id.dialog_room_description);
-        tvLocation = view.findViewById(R.id.dialog_room_location);
-        tvTime = view.findViewById(R.id.dialog_room_time);
-        tvAvailability = view.findViewById(R.id.dialog_room_availability);
+        tvDate = view.findViewById(R.id.room_date);
+        tvDescription = view.findViewById(R.id.room_description);
+        tvLocation = view.findViewById(R.id.room_location);
+        tvTime = view.findViewById(R.id.room_time);
+        tvAvailability = view.findViewById(R.id.room_availability);
 
         if (session != null) {
             tvTitle.setText(session.getTitle());
