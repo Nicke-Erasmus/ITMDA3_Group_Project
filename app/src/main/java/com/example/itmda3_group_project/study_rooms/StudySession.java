@@ -1,6 +1,8 @@
 package com.example.itmda3_group_project.study_rooms;
 
-public class StudySession {
+import java.io.Serializable;
+
+public class StudySession implements Serializable {
     String title;
     String location;
     String time;

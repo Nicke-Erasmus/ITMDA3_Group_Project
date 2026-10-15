@@ -40,9 +40,9 @@ public class Add_Study_Room extends Fragment {
             if (validateInputs()) {
                 StudySession session = new StudySession(
                         etTitle.getText().toString().trim(),
-                        etDate.getText().toString().trim(),
-                        etTime.getText().toString().trim(),
                         etLocation.getText().toString().trim(),
+                        etTime.getText().toString().trim(),
+                        etDate.getText().toString().trim(),
                         etAvailability.getText().toString().trim(),
                         etDescription.getText().toString().trim()
                 );
