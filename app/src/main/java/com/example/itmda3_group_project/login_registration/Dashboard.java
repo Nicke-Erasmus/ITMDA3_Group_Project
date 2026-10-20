@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.itmda3_group_project.AI_Helper_Fragment;
+import com.example.itmda3_group_project.AI_Helper.AI_Home_Fragment;
 import com.example.itmda3_group_project.Habit_Tracker_Fragment;
 import com.example.itmda3_group_project.Home_Fragment;
 import com.example.itmda3_group_project.Note_Taker_Fragment;
@@ -45,7 +45,7 @@ public class Dashboard extends AppCompatActivity {
                 selectedFragment = new Home_Fragment();
                 top_toolbar.setTitle("Home");
             } else if (id == R.id.ai_helper) {
-                selectedFragment = new AI_Helper_Fragment();
+                selectedFragment = new AI_Home_Fragment();
                 top_toolbar.setTitle("AI Helper");
             } else if (id == R.id.study_rooms) {
                 selectedFragment = new Study_Rooms_Fragment();
