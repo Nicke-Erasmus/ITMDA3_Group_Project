@@ -10,16 +10,6 @@
     android:layout_gravity="center"
     android:elevation="4dp">
 
-    <ImageButton
-        android:id="@+id/dialog_back_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/arrow_back"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        app:tint="@color/nav_blue"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
     <!-- Title -->
     <TextView
         android:id="@+id/dialog_room_title"
@@ -156,7 +146,7 @@
 
     <!-- Close Button -->
     <Button
-        android:id="@+id/dialog_close_button"
+        android:id="@+id/dialog_join_session"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:text="Join session"
@@ -166,6 +156,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
-        android:textSize="20dp"/>
+        android:textSize="20sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

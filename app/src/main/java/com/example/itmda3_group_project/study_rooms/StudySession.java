@@ -3,6 +3,7 @@ package com.example.itmda3_group_project.study_rooms;
 import java.io.Serializable;
 
 public class StudySession implements Serializable {
+    String id;
     String title;
     String location;
     String time;
@@ -20,6 +21,14 @@ public class StudySession implements Serializable {
         this.date = date;
         this.availability = availability;
         this.description = description;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {

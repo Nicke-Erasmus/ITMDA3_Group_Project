@@ -19,6 +19,7 @@ public class AddStudySessionViewModel extends ViewModel {
     public void addSession(StudySession session) {
         String id= reference.push().getKey();
         if (id != null) {
+            session.setId(id);
             reference.child(id).setValue(session)
                     .addOnSuccessListener(aVoid -> _saveSuccess.setValue(true))
                     .addOnFailureListener(e-> _saveSuccess.setValue(false));
