@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -19,6 +20,7 @@ public class Study_Rooms_Fragment extends Fragment {
     FloatingActionButton Add_button;
     private StudyRoomsViewModel viewModel;
     private StudyRoomsAdapter adapter;
+    SearchView searchView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,6 +28,10 @@ public class Study_Rooms_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_study_rooms, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+
+        searchView = view.findViewById(R.id.search);
+        searchView.clearFocus();
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         adapter = new StudyRoomsAdapter(session -> {
@@ -42,6 +48,21 @@ public class Study_Rooms_Fragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(StudyRoomsViewModel.class);
         viewModel.sessions.observe(getViewLifecycleOwner(), sessions -> {
             adapter.setSessions(sessions);
+        });
+
+        //Implements searching using the searchView
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return true;
+            }
         });
 
         //Add button logic
