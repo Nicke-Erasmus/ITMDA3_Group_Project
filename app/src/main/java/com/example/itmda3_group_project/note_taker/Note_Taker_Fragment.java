@@ -1,4 +1,4 @@
-package com.example.itmda3_group_project;
+package com.example.itmda3_group_project.note_taker;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+
+import com.example.itmda3_group_project.R;
 
 public class Note_Taker_Fragment extends Fragment {
 

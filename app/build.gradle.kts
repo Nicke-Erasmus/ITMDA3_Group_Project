@@ -27,6 +27,7 @@ android {
 
     buildFeatures {
         buildConfig = true
+        viewBinding = true
     }
 
     buildTypes {
@@ -45,19 +46,32 @@ android {
 }
 
 dependencies {
+    // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
     implementation(libs.firebase.database)
     implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.android.material:material:1.12.0")
 
+    //Android & UI
+    implementation("com.google.android.material:material:1.12.0")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 
+    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    // Room Database
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+
+    // Coroutines + Lifecycle
+    implementation("androidx.lifecycle:lifecycle-runtime:2.7.0")
+
+    // Networking for AI
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
 }
