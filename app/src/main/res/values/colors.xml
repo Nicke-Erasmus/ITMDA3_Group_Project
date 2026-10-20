@@ -7,4 +7,14 @@
     <color name="background_grey">#898989</color>
     <color name="light_blue">#007BA7</color>
 
+    <!-- AI Helper theme -->
+    <color name="bg_cream">#F8F2EB</color>
+    <color name="card_white">#FFFDFA</color>
+    <color name="brown_dark">#2E2118</color>
+    <color name="brown_text_light">#8A7A6D</color>
+    <color name="sage_green">#5E7F5A</color>
+    <color name="sage_light">#DCE5C8</color>
+    <color name="blush_pink">#F4CDD3</color>
+    <color name="beige_chip">#EBDFD3</color>
+    <color name="stroke_soft">#EDE3D8</color>
 </resources>
