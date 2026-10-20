@@ -4,7 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import android.widget.Filter;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,7 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudyRoomsAdapter extends RecyclerView.Adapter<StudyRoomsAdapter.ViewHolder> {
-    private List<StudySession> sessions = new ArrayList<>();
+    private List<StudySession> sessions;
+    private List<StudySession> sessionFull;
     private final OnItemClickListener listener;
 
     public interface OnItemClickListener {
@@ -23,10 +24,13 @@ public class StudyRoomsAdapter extends RecyclerView.Adapter<StudyRoomsAdapter.Vi
 
     public StudyRoomsAdapter(OnItemClickListener listener) {
         this.listener = listener;
+        this.sessions = new ArrayList<>();
+        this.sessionFull = new ArrayList<>();
     }
 
     public void setSessions(List<StudySession> sessions) {
         this.sessions = sessions;
+        this.sessionFull = new ArrayList<>(sessions);
         notifyDataSetChanged();
     }
 
@@ -47,6 +51,42 @@ public class StudyRoomsAdapter extends RecyclerView.Adapter<StudyRoomsAdapter.Vi
     public int getItemCount() {
         return sessions.size();
     }
+
+    //Searchview logic
+    public Filter getFilter() {
+        return studyRoomFilter;
+    }
+
+    private final Filter studyRoomFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<StudySession> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(sessionFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (StudySession session : sessionFull) {
+                    if (session.getTitle().toLowerCase().contains(filterPattern) ||
+                            session.getLocation().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(session);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            sessions.clear();
+            sessions.addAll((List<StudySession>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvLocation, tvDate, tvTime, tvDescription;
