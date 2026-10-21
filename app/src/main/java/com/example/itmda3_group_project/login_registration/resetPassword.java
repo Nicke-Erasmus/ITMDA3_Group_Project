@@ -2,18 +2,14 @@ package com.example.itmda3_group_project.login_registration;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.itmda3_group_project.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class resetPassword extends AppCompatActivity {
@@ -36,7 +32,22 @@ public class resetPassword extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //Reset button listener
+        btnReset.setOnClickListener(v -> {
+            String email = etForgetEmail.getText().toString().trim();
 
+            if (email.isEmpty()) {
+                Toast.makeText(this, "Please enter the email you used to create the account", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            mAuth.sendPasswordResetEmail(email)
+                    .addOnSuccessListener(unused -> {
+                        Toast.makeText(this, "Reset link sent to your email", Toast.LENGTH_LONG).show();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    });
+        });
 
         //Back button code
         btnBack.setOnClickListener(new View.OnClickListener() {
