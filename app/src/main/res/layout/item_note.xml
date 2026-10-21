@@ -23,15 +23,18 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/textViewTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#0F172A"
-                android:textSize="16sp"
+                android:textColor="@color/brown_dark"
+                android:textSize="18sp"
+                android:fontFamily="serif"
                 android:textStyle="bold"
                 tools:text="Meeting Agenda" />
+
             <ImageButton
                 android:id="@+id/buttonDelete"
                 android:layout_width="32dp"
