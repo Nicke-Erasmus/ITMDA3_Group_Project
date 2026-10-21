@@ -21,7 +21,7 @@ public class AI_Home_Fragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         // Inflate the fragment layout
-        View view = inflater.inflate(R.layout.activity_ai_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_ai_home, container, false);
 
         LinearLayout containerLayout = view.findViewById(R.id.toolsContainer);
 
