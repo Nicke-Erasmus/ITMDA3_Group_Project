@@ -1,0 +1,148 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#F8F3ED">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+        <!--  Back Button  -->
+        <TextView
+            android:id="@+id/txtBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="‹"
+            android:textSize="40sp"
+            android:textColor="#352A25"/>
+
+        <!--  Title  -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New Habit"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#352A25"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Build better habits, build the life you want."
+            android:textSize="15sp"
+            android:textColor="#756B65"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="25dp"/>
+
+        <!--  Habit Name  -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Habit Name *"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#352A25"/>
+
+        <EditText
+            android:id="@+id/edtHabitName"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="e.g. Study Software Engineering"
+            android:padding="15dp"
+            android:background="#FFFFFF"
+            android:layout_marginTop="8dp"/>
+
+        <!--  Description  -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description (optional)"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#352A25"
+            android:layout_marginTop="22dp"/>
+
+        <EditText
+            android:id="@+id/edtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="Add a short description..."
+            android:gravity="top|start"
+            android:padding="15dp"
+            android:background="#FFFFFF"
+            android:layout_marginTop="8dp"
+            android:inputType="textCapSentences|textMultiLine"
+            android:singleLine="false"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:enabled="true"
+            android:textColor="#352A25"
+            android:textColorHint="#756B65"/>
+
+        <!--  Category  -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#352A25"
+            android:layout_marginTop="22dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="#FFFFFF"
+            android:layout_marginTop="8dp"/>
+
+        <!--  Frequency  -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frequency"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#352A25"
+            android:layout_marginTop="22dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerFrequency"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="#FFFFFF"
+            android:layout_marginTop="8dp"/>
+
+        <!--  Reminder  -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reminder Time (optional)"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#352A25"
+            android:layout_marginTop="22dp"/>
+
+        <EditText
+            android:id="@+id/edtReminder"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Select time"
+            android:padding="15dp"
+            android:background="#FFFFFF"
+            android:layout_marginTop="8dp"
+            android:focusable="false"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:inputType="none"
+            android:textColor="#352A25"
+            android:textColorHint="#756B65"/>
+
+        <!--  Save Button  -->
+        <Button
+            android:id="@+id/btnSaveHabit"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Save Habit"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#4A3428"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="24dp" android:background="#F8F3ED">
+    <TextView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:gravity="center"
+        android:text="✓"
+        android:textSize="48sp"
+        android:textColor="#275B37"
+        android:background="#E2F1DF"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="Habit Added Successfully!"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#352A25"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="Your new habit is ready to track. Keep showing up for yourself, one day at a time."
+        android:textSize="16sp"
+        android:textColor="#756B65"/>
+
+    <Button
+        android:id="@+id/btnDone"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="32dp"
+        android:text="Done"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#4A3428"/>
+</LinearLayout>

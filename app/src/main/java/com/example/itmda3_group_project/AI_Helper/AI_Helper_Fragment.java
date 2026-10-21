@@ -35,7 +35,7 @@ public class AI_Helper_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_ai_helper, container, false);
+        View view = inflater.inflate(R.layout.fragment_ai_helper, container, false);
 
         rvMessages = view.findViewById(R.id.rvMessages);
         etMessage = view.findViewById(R.id.etMessage);

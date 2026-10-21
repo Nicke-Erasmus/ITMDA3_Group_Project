@@ -48,7 +48,7 @@ public class StudyPlanFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup parent,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_study_plan, parent, false);
+        View view = inflater.inflate(R.layout.fragment_study_plan, parent, false);
 
         tvSelectedDate = view.findViewById(R.id.tvSelectedDate);
         tvEmpty = view.findViewById(R.id.tvEmpty);

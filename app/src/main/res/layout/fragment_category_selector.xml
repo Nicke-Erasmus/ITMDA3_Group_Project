@@ -1,0 +1,148 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#F8F3ED" android:paddingStart="24dp" android:paddingEnd="24dp">
+    <!--  Header  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="22dp"
+        android:paddingBottom="24dp">
+
+        <TextView
+            android:id="@+id/btnCategoryBack"
+            android:layout_width="36dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="‹"
+            android:textSize="36sp"
+            android:textColor="#352A25"
+            android:contentDescription="Back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Select Category"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:textColor="#241D19"/>
+
+    </LinearLayout>
+    <!--  Category List  -->
+    <RadioGroup
+        android:id="@+id/rgCategories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--  Academic  -->
+        <RadioButton
+            android:id="@+id/rbAcademic"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="3dp"
+            android:background="@drawable/category_row"
+            android:buttonTint="#49372C"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:drawablePadding="14dp"
+            android:text="🎓 Academic"
+            android:textSize="16sp"
+            android:textColor="#352A25"
+            android:checked="true"/>
+
+        <!--  Health and Fitness  -->
+        <RadioButton
+            android:id="@+id/rbHealth"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="3dp"
+            android:background="@drawable/category_row"
+            android:buttonTint="#49372C"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:drawablePadding="14dp"
+            android:text="🏋️ Health and Fitness"
+            android:textSize="16sp"
+            android:textColor="#352A25"/>
+
+        <!--  Personal  -->
+        <RadioButton
+            android:id="@+id/rbPersonal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="3dp"
+            android:background="@drawable/category_row"
+            android:buttonTint="#49372C"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:drawablePadding="14dp"
+            android:text="💗 Personal"
+            android:textSize="16sp"
+            android:textColor="#352A25"/>
+
+        <!--  Study Skills  -->
+        <RadioButton
+            android:id="@+id/rbStudySkills"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="3dp"
+            android:background="@drawable/category_row"
+            android:buttonTint="#49372C"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:drawablePadding="14dp"
+            android:text="💡 Study Skills"
+            android:textSize="16sp"
+            android:textColor="#352A25"/>
+
+        <!--  Social  -->
+        <RadioButton
+            android:id="@+id/rbSocial"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="3dp"
+            android:background="@drawable/category_row"
+            android:buttonTint="#49372C"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:drawablePadding="14dp"
+            android:text="👥 Social"
+            android:textSize="16sp"
+            android:textColor="#352A25"/>
+
+        <!--  Finance  -->
+        <RadioButton
+            android:id="@+id/rbFinance"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/category_row"
+            android:buttonTint="#49372C"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:drawablePadding="14dp"
+            android:text="💰 Finance"
+            android:textSize="16sp"
+            android:textColor="#352A25"/>
+
+    </RadioGroup>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!--  Continue Button  -->
+    <Button
+        android:id="@+id/btnContinueCategory"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginBottom="48dp"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#30231D"
+        android:stateListAnimator="@null"
+        android:elevation="0dp"/>
+</LinearLayout>
