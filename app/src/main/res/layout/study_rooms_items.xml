@@ -13,8 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        >
+        android:padding="10dp">
 
     <TextView
         android:id="@+id/room_title"
@@ -22,6 +21,7 @@
         android:layout_width="wrap_content"
         android:textSize="20dp"
         android:text="Room Name"
+        android:fontFamily="serif"
         style="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -35,6 +35,7 @@
         android:layout_width="wrap_content"
         android:textSize="20dp"
         android:text="Date"
+        android:fontFamily="serif"
         style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/room_title"
