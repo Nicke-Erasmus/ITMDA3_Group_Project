@@ -21,10 +21,6 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bottom_nav);
 
-        /* Top tool bar */
-        MaterialToolbar top_toolbar = findViewById(R.id.topAppBar);
-        top_toolbar.setTitle("Dashboard");
-
         /* Bottom navigation bar */
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -43,19 +39,14 @@ public class Dashboard extends AppCompatActivity {
 
             if (id == R.id.home) {
                 selectedFragment = new Home_Fragment();
-                top_toolbar.setTitle("Home");
             } else if (id == R.id.ai_helper) {
                 selectedFragment = new AI_Home_Fragment();
-                top_toolbar.setTitle("AI Helper");
             } else if (id == R.id.study_rooms) {
                 selectedFragment = new Study_Rooms_Fragment();
-                top_toolbar.setTitle("Study Rooms");
             } else if (id == R.id.habit_tracker) {
                 selectedFragment = new Habit_Tracker_Fragment();
-                top_toolbar.setTitle("Habit Tracker");
             } else if (id == R.id.notes) {
                 selectedFragment = new Note_Taker_Fragment();
-                top_toolbar.setTitle("Note Taker");
             }
 
             if (selectedFragment != null) {
