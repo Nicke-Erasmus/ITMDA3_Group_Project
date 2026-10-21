@@ -32,6 +32,14 @@ public class LoginPage extends AppCompatActivity {
         //Initializing firebase authentication
         mAuth = FirebaseAuth.getInstance();
 
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            Intent intent = new Intent(LoginPage.this, Dashboard.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
+
         btnLogin = findViewById(R.id.btnLogin);
         tvRegister = findViewById(R.id.tvRegister);
         logEmail = findViewById(R.id.etEmail);
