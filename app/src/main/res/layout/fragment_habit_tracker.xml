@@ -167,7 +167,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Weekly Progress"
+                    android:text="Daily Progress"
                     android:textColor="@color/brown_dark"
                     android:textSize="16sp"
                     android:textStyle="bold"

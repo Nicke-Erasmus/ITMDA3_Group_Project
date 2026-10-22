@@ -6,6 +6,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itmda3_group_project.R;
@@ -49,6 +50,16 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
     public void onBindViewHolder(@NonNull HabitViewHolder holder, int position) {
         HabitClass habit = habits.get(position);
         holder.bind(habit, checkedListener);
+
+        // Make the whole item clickable → open detail fragment
+        holder.itemView.setOnClickListener(v -> {
+            HabitDetailFragment detailFragment = new HabitDetailFragment(habit);
+            ((FragmentActivity) v.getContext()).getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_Container, detailFragment)
+                    .addToBackStack(null)
+                    .commit();
+        });
     }
 
     @Override
