@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    card_view:cardElevation="6dp"
+
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvProgressPercent"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@color/brown_dark"
+            android:gravity="center"
+            android:text="🔥"
+            android:textSize="27sp"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingStart="14dp">
+
+            <TextView
+                android:id="@+id/tvHabitTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Study Software engineering"
+                android:textColor="@color/brown_dark"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="serif"/>
+
+            <TextView
+                android:id="@+id/tvHabitTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="8:00"
+                android:textColor="#76665A"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/checkHabit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:buttonTint="#2F2119"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_vertical"
+            android:focusable="false"
+            android:clickable="true"/>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

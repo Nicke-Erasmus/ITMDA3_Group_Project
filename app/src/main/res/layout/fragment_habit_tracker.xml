@@ -18,30 +18,22 @@
         android:paddingBottom="12dp">
 
         <TextView
-            android:id="@+id/btnBack"
-            android:layout_width="36dp"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="‹"
-            android:textSize="36sp"
-            android:textColor="#352A25"
-            android:contentDescription="Back" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="Habit Tracker"
-            android:textSize="21sp"
+            android:textSize="25sp"
             android:textStyle="bold"
-            android:textColor="#241D19" />
+            android:textColor="#241D19"
+            android:fontFamily="serif"/>
     </LinearLayout>
 
     <!-- Main content -->
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <!-- Empty state -->
         <LinearLayout
@@ -52,7 +44,8 @@
             android:gravity="center"
             android:paddingStart="32dp"
             android:paddingEnd="32dp"
-            android:paddingBottom="24dp">
+            android:paddingBottom="24dp"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -91,26 +84,134 @@
                 android:textColor="#625953" />
         </LinearLayout>
 
-        <!-- Saved habits appear here -->
-        <ScrollView
-            android:id="@+id/habitsScroll"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-            android:fillViewport="true">
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/bg_book_icon"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:layout_marginHorizontal="20dp">
+
+            <TextView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_book_icon"
+                android:gravity="center"
+                android:text="🔥"
+                android:textSize="27sp"/>
 
             <LinearLayout
-                android:id="@+id/habitsContainer"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:paddingTop="12dp"
-                android:paddingBottom="20dp" />
-        </ScrollView>
+                android:paddingStart="14dp">
 
-    </FrameLayout>
+                <TextView
+                    android:id="@+id/tvStreak"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5 Day Streak"
+                    android:textColor="#2F2119"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Keep going!"
+                    android:textColor="#76665A"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="›"
+                android:textColor="#2F2119"
+                android:textSize="30sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/bg_detail_card"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:layout_marginHorizontal="20dp">
+
+            <TextView
+                android:id="@+id/tvProgressPercent"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@color/brown_dark"
+                android:gravity="center"
+                android:text="80%"
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingStart="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Weekly Progress"
+                    android:textColor="@color/brown_dark"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"/>
+
+                <TextView
+                    android:id="@+id/tvOutOf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Keep going!"
+                    android:textColor="#76665A"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="›"
+                android:textColor="#2F2119"
+                android:textSize="30sp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Today's Habits"
+            android:textColor="@color/brown_dark"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="20dp"
+            android:fontFamily="serif"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerHabits"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:clipToPadding="false"/>
+
+    </LinearLayout>
 
     <!-- Add Habit button remains available -->
     <Button
@@ -130,115 +231,6 @@
         android:stateListAnimator="@null"
         android:elevation="0dp" />
 
-    <!-- Bottom Navigation -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="68dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:background="#FFFCF8"
-        android:elevation="4dp">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="⌂"
-                android:textSize="25sp"
-                android:textColor="#756B65" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:textSize="11sp"
-                android:textColor="#756B65" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="▦"
-                android:textSize="23sp"
-                android:textColor="#756B65" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Planner"
-                android:textSize="11sp"
-                android:textColor="#756B65" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🌱"
-                android:textSize="23sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Habits"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:textColor="#352A25" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="▤"
-                android:textSize="23sp"
-                android:textColor="#756B65" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Resources"
-                android:textSize="11sp"
-                android:textColor="#756B65" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="♙"
-                android:textSize="23sp"
-                android:textColor="#756B65" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Profile"
-                android:textSize="11sp"
-                android:textColor="#756B65" />
-        </LinearLayout>
-
-    </LinearLayout>
 
 </LinearLayout>

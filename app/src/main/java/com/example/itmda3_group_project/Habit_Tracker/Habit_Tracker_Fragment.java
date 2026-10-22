@@ -5,34 +5,140 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itmda3_group_project.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Habit_Tracker_Fragment extends Fragment {
 
+    private DatabaseReference reference;
+    private LinearLayout emptyState;
+    private RecyclerView recyclerHabits;
+    private Button btnAddHabit;
+    private HabitAdapter adapter;
+    private List<HabitClass> habitList = new ArrayList<>();
+
+    // Stats views
+    private TextView tvOutOf;
+    private TextView tvProgressPercent;
+
+    private int completedCount = 0;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout
-        View view = inflater.inflate(R.layout.fragment_habit_tracker, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_habit_tracker, container, false);
 
-        // Find the button inside the inflated view
-        Button btnAddHabit = view.findViewById(R.id.btnAddHabit);
+        emptyState = rootView.findViewById(R.id.emptyState);
+        recyclerHabits = rootView.findViewById(R.id.recyclerHabits);
+        btnAddHabit = rootView.findViewById(R.id.btnAddHabit);
+        tvOutOf = rootView.findViewById(R.id.tvOutOf);
+        tvProgressPercent = rootView.findViewById(R.id.tvProgressPercent);
 
-        // Set up the click listener
+        recyclerHabits.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new HabitAdapter(habitList, (habit, isChecked) -> {
+            if (isChecked) {
+                completedCount++;
+            } else {
+                completedCount--;
+            }
+            updateStats();
+        });
+        recyclerHabits.setAdapter(adapter);
+
+        String uid = FirebaseAuth.getInstance().getUid();
+        if (uid != null) {
+            reference = FirebaseDatabase.getInstance()
+                    .getReference("users")
+                    .child(uid)
+                    .child("habits");
+        } else {
+            Toast.makeText(getActivity(),
+                    "User not logged in. Please sign in.",
+                    Toast.LENGTH_LONG).show();
+        }
+
         btnAddHabit.setOnClickListener(v -> {
-            // Replace current fragment with CategorySelectorFragment
-            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_Container, new CategorySelectorFragment());
-            transaction.addToBackStack(null); // allows back navigation
-            transaction.commit();
+            requireActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_Container, new CategorySelectorFragment())
+                    .addToBackStack(null)
+                    .commit();
         });
 
-        return view;
+        loadHabits();
+
+        return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadHabits();
+    }
+
+    private void loadHabits() {
+        if (reference == null) return;
+
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                habitList.clear();
+                completedCount = 0;
+
+                if (!snapshot.hasChildren()) {
+                    emptyState.setVisibility(View.VISIBLE);
+                    recyclerHabits.setVisibility(View.GONE);
+                    tvOutOf.setText("0 out of 0 completed");
+                    tvProgressPercent.setText("0%");
+                    return;
+                }
+
+                for (DataSnapshot child : snapshot.getChildren()) {
+                    HabitClass habit = child.getValue(HabitClass.class);
+                    if (habit != null) {
+                        habitList.add(habit);
+                    }
+                }
+
+                adapter.notifyDataSetChanged();
+                emptyState.setVisibility(View.GONE);
+                recyclerHabits.setVisibility(View.VISIBLE);
+                updateStats();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(),
+                        "Couldn't load habits. Check Firebase rules and connection.",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void updateStats() {
+        int total = habitList.size();
+        int completed = completedCount;
+        int percentage = total > 0 ? (completed * 100 / total) : 0;
+
+        tvOutOf.setText(completed + " out of " + total + " completed");
+        tvProgressPercent.setText(percentage + "%");
     }
 }
-
-
