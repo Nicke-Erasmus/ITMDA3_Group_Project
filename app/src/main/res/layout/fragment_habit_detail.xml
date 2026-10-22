@@ -22,17 +22,11 @@
                 android:textColor="#2F2119"
                 android:textSize="38sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="⋮"
-                android:textColor="#2F2119"
-                android:textSize="28sp"/>
 
         </LinearLayout>
         <!--  Habit title  -->
         <TextView
+            android:id="@+id/tvHabitTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -59,6 +53,7 @@
                 android:textSize="34sp"/>
 
             <TextView
+                android:id="@+id/tvCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
@@ -70,6 +65,7 @@
                 android:textSize="15sp"/>
 
             <TextView
+                android:id="@+id/tvFrequency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -84,6 +80,7 @@
 
         <!--  Description  -->
         <TextView
+            android:id="@+id/tvDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -130,6 +127,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
+                        android:id="@+id/tvHabitReminderTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -168,6 +166,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/tvNotes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="46dp"
@@ -178,18 +177,6 @@
                 android:textSize="16sp"/>
 
         </LinearLayout>
-
-        <!--  Edit button  -->
-        <Button
-            android:id="@+id/btnEditHabit"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/bg_edit_button"
-            android:text="✎ Edit Habit"
-            android:textAllCaps="false"
-            android:textColor="#382920"
-            android:textSize="17sp"/>
 
         <!--  Delete button  -->
         <Button
@@ -203,17 +190,5 @@
             android:textColor="#C95752"
             android:textSize="17sp"/>
 
-        <!--  Back button  -->
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/bg_back_button"
-            android:text="Back"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="17sp"/>
     </LinearLayout>
 </ScrollView>
