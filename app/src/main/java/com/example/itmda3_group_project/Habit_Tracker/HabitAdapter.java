@@ -9,7 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itmda3_group_project.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHolder> {
@@ -72,8 +77,32 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
 
             tvProgress.setText("🔥"); // placeholder icon
 
+            checkHabit.setOnCheckedChangeListener(null);
+            checkHabit.setChecked(habit.isCompleted());
+
             checkHabit.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                habit.setCompleted(isChecked);
                 checkedListener.onHabitChecked(habit, isChecked);
+
+                // Save to Firebase
+                String uid = FirebaseAuth.getInstance().getUid();
+                if (uid != null && habit.getID() != null) {
+                    DatabaseReference habitRef = FirebaseDatabase.getInstance()
+                            .getReference("users")
+                            .child(uid)
+                            .child("habits")
+                            .child(habit.getID());
+
+                    // Save completion state
+                    habitRef.child("completed").setValue(isChecked);
+
+                    // Save today's date if completed
+                    if (isChecked) {
+                        String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+                        habit.setLastCompletedDate(today);
+                        habitRef.child("lastCompletedDate").setValue(today);
+                    }
+                }
             });
         }
     }

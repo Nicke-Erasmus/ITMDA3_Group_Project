@@ -1,12 +1,14 @@
 package com.example.itmda3_group_project.Habit_Tracker;
 
 public class HabitClass {
+    private String id;
     private String name;
     private String description;
     private String category;
     private String frequency;
     private String reminderTime;
-
+    private boolean completed;
+    private String lastCompletedDate;
     public HabitClass() {}
 
     //Using a class simplifies adding and extracting data from firebase
@@ -16,6 +18,15 @@ public class HabitClass {
         this.category = category;
         this.frequency = frequency;
         this.reminderTime = reminderTime;
+
+    }
+
+    public String getID() {
+        return id;
+    }
+
+    public void setID(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -53,8 +64,11 @@ public class HabitClass {
     public String getReminderTime() {
         return reminderTime;
     }
-
     public void setReminderTime(String reminderTime) {
         this.reminderTime = reminderTime;
     }
+    public boolean isCompleted() { return completed; }
+    public void setCompleted(boolean completed) { this.completed = completed; }
+    public String getLastCompletedDate() { return lastCompletedDate; }
+    public void setLastCompletedDate(String lastCompletedDate) { this.lastCompletedDate = lastCompletedDate; }
 }
