@@ -6,12 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.itmda3_group_project.AI_Helper.AI_Home_Fragment;
-import com.example.itmda3_group_project.Habit_Tracker_Fragment;
+import com.example.itmda3_group_project.Habit_Tracker.Habit_Tracker_Fragment;
 import com.example.itmda3_group_project.Home_Fragment;
 import com.example.itmda3_group_project.note_taker.Note_Taker_Fragment;
 import com.example.itmda3_group_project.R;
 import com.example.itmda3_group_project.study_rooms.Study_Rooms_Fragment;
-import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Dashboard extends AppCompatActivity {
