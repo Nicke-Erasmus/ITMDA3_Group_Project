@@ -22,7 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Habit_Tracker_Fragment extends Fragment {
@@ -111,13 +113,25 @@ public class Habit_Tracker_Fragment extends Fragment {
                     return;
                 }
 
+                String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
                 for (DataSnapshot child : snapshot.getChildren()) {
                     HabitClass habit = child.getValue(HabitClass.class);
                     if (habit != null) {
+                        habit.setID(child.getKey());
+
+                        // Reset if lastCompletedDate is not today
+                        if (habit.getLastCompletedDate() == null ||
+                                !habit.getLastCompletedDate().equals(today)) {
+                            habit.setCompleted(false);
+                            reference.child(habit.getID()).child("completed").setValue(false);
+                        }
+
                         habitList.add(habit);
                     }
                 }
 
+                adapter.setHabits(habitList);
                 adapter.notifyDataSetChanged();
                 emptyState.setVisibility(View.GONE);
                 recyclerHabits.setVisibility(View.VISIBLE);
@@ -135,7 +149,13 @@ public class Habit_Tracker_Fragment extends Fragment {
 
     private void updateStats() {
         int total = habitList.size();
-        int completed = completedCount;
+        int completed = 0;
+
+        for (HabitClass habit: habitList) {
+            if (habit.isCompleted()) {
+                completed++;
+            }
+        }
         int percentage = total > 0 ? (completed * 100 / total) : 0;
 
         tvOutOf.setText(completed + " out of " + total + " completed");
