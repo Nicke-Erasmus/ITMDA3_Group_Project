@@ -24,6 +24,7 @@ public class CategorySelectorFragment extends Fragment {
         RadioGroup rgCategories = rootView.findViewById(R.id.rgCategories);
         Button btnContinue = rootView.findViewById(R.id.btnContinueCategory);
 
+
         btnContinue.setOnClickListener(v -> {
             int selectedCategoryId = rgCategories.getCheckedRadioButtonId();
 

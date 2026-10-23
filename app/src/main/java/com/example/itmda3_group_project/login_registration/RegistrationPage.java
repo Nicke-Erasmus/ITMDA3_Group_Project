@@ -85,6 +85,7 @@ public class RegistrationPage extends AppCompatActivity {
                     reference.child(uid).setValue(helperClass)
                     .addOnSuccessListener(aVoid -> {
                         Toast.makeText(RegistrationPage.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+                        mAuth.signOut();
                         startActivity(new Intent(RegistrationPage.this, LoginPage.class));
                         })
                     .addOnFailureListener(e -> {

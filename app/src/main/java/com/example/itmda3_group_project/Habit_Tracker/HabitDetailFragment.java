@@ -71,7 +71,7 @@ public class HabitDetailFragment extends Fragment {
                 emoji = "🎓";
                 note = "Keep learning, every step counts!";
                 break;
-            case "Health and Fitness":
+            case "Health":
                 emoji = "🏋️‍♂️";
                 note = "Strong body, strong mind — you’ve got this!";
                 break;
