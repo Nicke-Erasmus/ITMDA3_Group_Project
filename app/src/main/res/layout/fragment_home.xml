@@ -157,7 +157,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="5dp"
-        android:background="@drawable/bg_edit_button"
+        android:background="@drawable/bg_card_dark"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="14dp"
@@ -169,11 +169,11 @@
             android:id="@+id/tvProgressPercent"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:background="@color/brown_dark"
+            android:background="@drawable/bg_chip"
             android:gravity="center"
             android:text="0%"
             android:textSize="20sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -186,7 +186,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Daily Progress"
-                android:textColor="@color/brown_dark"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:fontFamily="serif"/>
@@ -197,7 +197,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Keep going!"
-                android:textColor="#76665A"
+                android:textColor="#D9C7B8"
                 android:textSize="14sp"/>
         </LinearLayout>
 
@@ -205,7 +205,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="›"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textSize="28sp"/>
 
     </LinearLayout>
@@ -224,18 +224,40 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginHorizontal="20dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerNotes"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:orientation="horizontal"
-        android:overScrollMode="never"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@id/tvNotes"
-        android:background="@drawable/bg_edit_button"
-        android:padding="10dp"/>
+        <LinearLayout
+            android:id="@+id/notesPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvNotes"
+            android:background="@drawable/bg_edit_button"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/noteTitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Note 1"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/bg_book_icon"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/noteTitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Note 2"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/bg_book_icon"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
