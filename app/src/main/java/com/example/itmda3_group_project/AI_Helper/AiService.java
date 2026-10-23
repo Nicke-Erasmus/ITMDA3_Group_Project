@@ -23,7 +23,7 @@ public class AiService {
 
     private static final String MODEL = "gemini-3.8-flash";
     private static final String API_URL =
-            "https://generativelanguage.googleapis.com/v1/models/" + MODEL + ":generateContent";
+            "https://generativelanguage.googleapis.com/v1beta/models/" + MODEL + ":generateContent";
     private static final int MAX_ATTEMPTS = 4;
 
     //Shorter prompt means let tokens being sent
@@ -96,8 +96,8 @@ public class AiService {
                 if ((code == 503 || code == 429) && attempt < MAX_ATTEMPTS) {
                     try {
                         //Nicke changed the base time which sends random requests and makes the AI more likely to succeed
-                        long baseDelay = (long) Math.pow(2, attempt) * 1000;
-                        long jitter = (long) (Math.random() * 1000);
+                        long baseDelay = (long) Math.pow(2, attempt) * 2000;
+                        long jitter = (long) (Math.random() * 2000);
                         Thread.sleep(baseDelay + jitter);
                     } catch (InterruptedException ignored) { }
                     send(request, listener, attempt + 1);
