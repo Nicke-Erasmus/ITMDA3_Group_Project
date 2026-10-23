@@ -18,5 +18,8 @@ public interface NoteDao {
     List<Note> getAllNotes();
     @Query("SELECT * FROM notes WHERE id = :id LIMIT 1")
     Note getNoteById(int id);
+    @Query("SELECT * FROM notes ORDER BY timestamp DESC LIMIT 2")
+    List<Note> getTwoMostRecentNotes();
+
 }
 

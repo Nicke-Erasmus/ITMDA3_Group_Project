@@ -42,27 +42,40 @@
                 />
 
             <!-- Email -->
-            <EditText
-                android:id="@+id/etEmail"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/login_register_edits"
-                android:paddingLeft="20dp"
-                android:hint="Email"
-                android:textColor="@color/black"
-                android:layout_marginTop="40dp"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/login_register_edits"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Password -->
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:endIconMode="password_toggle"
+                android:layout_marginTop="15dp">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/login_register_edits"
-                android:paddingLeft="20dp"
                 android:inputType="textPassword"
                 android:hint="Password"
                 android:textColor="@color/black"
-                android:layout_marginTop="20dp"/>
+                />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <!-- Reset Password -->
             <TextView

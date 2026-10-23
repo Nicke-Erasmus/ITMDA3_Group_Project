@@ -81,7 +81,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         }
 
         holder.binding.buttonDelete.setOnClickListener(v -> onDeleteClick.onDeleteClick(note));
-        holder.itemView.setOnClickListener(v -> onNoteClick.onNoteClick(note));holder.itemView.setOnClickListener(v -> onNoteClick.onNoteClick(note));
+        holder.itemView.setOnClickListener(v -> onNoteClick.onNoteClick(note));
     }
 
     @Override

@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Switch;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +38,7 @@ public class HabitDetailFragment extends Fragment {
         TextView tvDescription = rootView.findViewById(R.id.tvDescription);
         TextView tvReminderTime = rootView.findViewById(R.id.tvHabitReminderTime);
         TextView tvNotes = rootView.findViewById(R.id.tvNotes);
-        Switch switchReminder = rootView.findViewById(R.id.switchReminder);
+        TextView tvemoji = rootView.findViewById(R.id.tvemoji);
         Button btnDeleteHabit = rootView.findViewById(R.id.btnDeleteHabit);
 
         //Gets the correct data from firebase to use in the details fragment
@@ -63,11 +63,41 @@ public class HabitDetailFragment extends Fragment {
                 requireActivity().getSupportFragmentManager().popBackStack()
         );
 
-        switchReminder.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (reference != null) {
-                reference.child("reminderEnabled").setValue(isChecked);
-            }
-        });
+        String category = habit.getCategory(); // make sure HabitClass has a category field
+        String emoji;
+        String note;
+        switch (category) {
+            case "Academic":
+                emoji = "🎓";
+                note = "Keep learning, every step counts!";
+                break;
+            case "Health and Fitness":
+                emoji = "🏋️‍♂️";
+                note = "Strong body, strong mind — you’ve got this!";
+                break;
+            case "Personal":
+                emoji = "💗";
+                note = "Take care of yourself, you deserve it.";
+                break;
+            case "Study Skills":
+                emoji = "💡";
+                note = "Smart habits build lasting success.";
+                break;
+            case "Social":
+                emoji = "👥";
+                note = "Connections make life brighter — reach out!";
+                break;
+            case "Finance":
+                emoji = "💰";
+                note = "Small savings today grow into big wins tomorrow.";
+                break;
+            default:
+                emoji = "🔥";
+                note = "Stay motivated, you’re on fire!";
+        }
+        tvemoji.setText(emoji);
+        tvNotes.setText(note); // add a TextView for the note
+
 
         btnDeleteHabit.setOnClickListener(v -> {
             if (reference != null) {

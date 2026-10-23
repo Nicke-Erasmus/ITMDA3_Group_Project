@@ -59,9 +59,15 @@ public class RegistrationPage extends AppCompatActivity {
             String password = regPassword.getText().toString().trim();
             String confirmPassword = regConfirmPassword.getText().toString().trim();
 
+            //Check if fields are empty
+            if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                Toast.makeText(RegistrationPage.this, "Please fill in all required fields", Toast.LENGTH_LONG).show();
+                return;
+            }
+
             // Checks if passwords are the same
             if (!password.equals(confirmPassword)) {
-                Toast.makeText(RegistrationPage.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegistrationPage.this, "Passwords do not match", Toast.LENGTH_LONG).show();
                 regPassword.setText("");
                 regConfirmPassword.setText("");
                 return;
@@ -82,15 +88,15 @@ public class RegistrationPage extends AppCompatActivity {
                         startActivity(new Intent(RegistrationPage.this, LoginPage.class));
                         })
                     .addOnFailureListener(e -> {
-                        Toast.makeText(RegistrationPage.this, "Database error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistrationPage.this, "Database error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         });
                  } else {
                      //Handles duplicate emails and gives an appropriate response.
                    if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                       Toast.makeText(RegistrationPage.this, "This email is already registered.", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(RegistrationPage.this, "This email is already registered.", Toast.LENGTH_LONG).show();
                        regEmail.setText("");
                     } else {
-                        Toast.makeText(RegistrationPage.this, "Auth failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistrationPage.this, "Auth failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                  }
             });

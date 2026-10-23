@@ -87,6 +87,27 @@ public class Habit_Tracker_Fragment extends Fragment {
 
         loadHabits();
 
+        //Checks and loads the daily streak for habits completed
+        TextView tvStreak = rootView.findViewById(R.id.tvStreak);
+
+        DatabaseReference streakRef = FirebaseDatabase.getInstance()
+                .getReference("users")
+                .child(FirebaseAuth.getInstance().getUid())
+                .child("streak");
+
+        streakRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Integer streakCount = snapshot.child("streakCount").getValue(Integer.class);
+                if (streakCount == null) streakCount = 0;
+                tvStreak.setText(streakCount + " Day Streak");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+
+
         return rootView;
     }
 
