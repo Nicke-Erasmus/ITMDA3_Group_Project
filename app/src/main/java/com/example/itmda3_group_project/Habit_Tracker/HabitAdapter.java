@@ -11,10 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itmda3_group_project.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -68,14 +72,14 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
     }
 
     static class HabitViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle, tvTime, tvProgress;
+        TextView tvTitle, tvTime, tvEmoji;
         CheckBox checkHabit;
 
         HabitViewHolder(View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvHabitTitle);
             tvTime = itemView.findViewById(R.id.tvHabitTime);
-            tvProgress = itemView.findViewById(R.id.tvProgressPercent);
+            tvEmoji = itemView.findViewById(R.id.tvProgressPercent);
             checkHabit = itemView.findViewById(R.id.checkHabit);
         }
 
@@ -86,7 +90,37 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
             tvTime.setText(habit.getReminderTime() == null || habit.getReminderTime().isEmpty()
                     ? "No reminder" : habit.getReminderTime());
 
-            tvProgress.setText("🔥"); // placeholder icon
+            // Map category → emoji
+            String category = habit.getCategory(); // make sure HabitClass has a category field
+            String emoji;
+            if (category == null) {
+                emoji = "🔥"; // fallback
+            } else {
+                switch (category) {
+                    case "Academic":
+                        emoji = "\uD83C\uDF93";
+                        break;
+                    case "Health and Fitness":
+                        emoji = "\uD83C\uDFCB\uFE0F";
+                        break;
+                    case "Personal":
+                        emoji = "\uD83D\uDC97";
+                        break;
+                    case "Study Skills":
+                        emoji = "\uD83D\uDCA1";
+                        break;
+                    case "Social":
+                        emoji = "\uD83D\uDC65";
+                        break;
+                    case "Finance":
+                        emoji = "💰";
+                        break;
+                    default:
+                        emoji = "🔥"; // fallback
+                }
+            }
+
+            tvEmoji.setText(emoji);
 
             checkHabit.setOnCheckedChangeListener(null);
             checkHabit.setChecked(habit.isCompleted());
@@ -95,7 +129,6 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
                 habit.setCompleted(isChecked);
                 checkedListener.onHabitChecked(habit, isChecked);
 
-                // Save to Firebase
                 String uid = FirebaseAuth.getInstance().getUid();
                 if (uid != null && habit.getID() != null) {
                     DatabaseReference habitRef = FirebaseDatabase.getInstance()
@@ -104,17 +137,51 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
                             .child("habits")
                             .child(habit.getID());
 
-                    // Save completion state
                     habitRef.child("completed").setValue(isChecked);
 
-                    // Save today's date if completed
                     if (isChecked) {
                         String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
                         habit.setLastCompletedDate(today);
                         habitRef.child("lastCompletedDate").setValue(today);
+
+                        // Update streak (When a habit is completed the streak updates)
+                        DatabaseReference streakRef = FirebaseDatabase.getInstance()
+                                .getReference("users")
+                                .child(uid)
+                                .child("streak");
+
+                        streakRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String lastDate = snapshot.child("lastStreakDate").getValue(String.class);
+                                Integer streakCount = snapshot.child("streakCount").getValue(Integer.class);
+                                if (streakCount == null) streakCount = 0;
+
+                                if (lastDate != null) {
+                                    Calendar cal = Calendar.getInstance();
+                                    cal.add(Calendar.DAY_OF_YEAR, -1);
+                                    String yesterday = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime());
+
+                                    if (lastDate.equals(yesterday)) {
+                                        streakCount++; // consecutive day
+                                    } else if (!lastDate.equals(today)) {
+                                        streakCount = 1; // reset streak
+                                    }
+                                } else {
+                                    streakCount = 1; // first completion
+                                }
+
+                                streakRef.child("streakCount").setValue(streakCount);
+                                streakRef.child("lastStreakDate").setValue(today);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {}
+                        });
                     }
                 }
             });
+
         }
     }
 }

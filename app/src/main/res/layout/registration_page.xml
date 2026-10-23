@@ -42,66 +42,106 @@
                 android:textStyle="bold" />
 
             <!-- Username -->
-            <EditText
-                android:id="@+id/etUsername"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/login_register_edits"
-                android:hint="Username"
-                android:paddingLeft="20dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/login_register_edits"
+                    android:hint="Username"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Email -->
-            <EditText
-                android:id="@+id/etEmail"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/login_register_edits"
-                android:hint="Email"
-                android:paddingLeft="20dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/login_register_edits"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- University name -->
-            <EditText
-                android:id="@+id/etUniversity"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/login_register_edits"
-                android:hint="University Name"
-                android:paddingLeft="20dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUniversity"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/login_register_edits"
+                    android:hint="University Name"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Study Path -->
-            <EditText
-                android:id="@+id/etStudyPath"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/login_register_edits"
-                android:hint="Study Path"
-                android:paddingLeft="20dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etStudyPath"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/login_register_edits"
+                    android:hint="Study Path"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Password -->
-            <EditText
-                android:id="@+id/etPassword"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/login_register_edits"
-                android:inputType="textPassword"
-                android:hint="Password"
-                android:paddingLeft="20dp" />
+                android:layout_height="wrap_content"
+                app:endIconMode="password_toggle"
+                android:layout_marginTop="7dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/login_register_edits"
+                    android:inputType="textPassword"
+                    android:hint="Password"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Confirm Password -->
-            <EditText
-                android:id="@+id/etConfirmPassword"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/login_register_edits"
-                android:inputType="textPassword"
-                android:hint="Confirm Password"
-                android:paddingLeft="20dp" />
+                android:layout_height="wrap_content"
+                app:endIconMode="password_toggle"
+                android:layout_marginTop="7dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etConfirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/login_register_edits"
+                    android:inputType="textPassword"
+                    android:hint="Confirm Password"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <!-- Register button -->
             <Button

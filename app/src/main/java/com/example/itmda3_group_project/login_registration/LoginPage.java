@@ -67,7 +67,6 @@ public class LoginPage extends AppCompatActivity {
                 mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
                         Toast.makeText(LoginPage.this, "Login successful!", Toast.LENGTH_LONG).show();
 
                         Intent intent = new Intent(LoginPage.this, Dashboard.class);
